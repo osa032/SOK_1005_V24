@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Skatt og Konsumentoverskudd</title>
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
+</head>
+    <style>
+        .slider {
+            -webkit-appearance: none;
+            height: 1px;
+            background: #c7c7c7;
+            outline: none;
+            opacity: 0.5;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            width: 80%;
+            margin-left: 50px;
+        }
+
+        img.slides {
+            width: 100%;
+            display: none;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 85px;
+            height: 25px;
+            background: url("img/slidericon.png");
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 85px;
+            height: 25px;
+            background: url("img/slidericon.png");
+            cursor: pointer;
+            border: none;
+        }
+
+        p {
+            margin-left: 20px;
+            max-width: 980px;
+            font-family: "verdana";
+            text-align: left;
+            color: #063f5c;
+            font-size: 1em;
+        }
+
+        h1 {
+            font-family: "verdana";
+            color: #063f5c;
+            text-align: center;
+            font-size: 1.5em;
+        }
+    </style>
+
+<body>
+    <h1>Skatt og Konsumentoverskudd</h1>
+    <p>
+        <img class="line" src="img/break_line.png" width="975"/><br>
+        Her kommer slideren og bildet. <br>
+        Dette er før parameterverdien <span id="demo"></span> og dette er etter.
+    </p>
+    <input type='range' min='0' max='14' value='0' class='slider' id='myRange'>
+<br><br><input type='range' min='0' max='14' value='0' class='slider' id='myRange'><br><br>
+<img class='slides' src='/content/fig0.png' style='display:none;'>
+<img class='slides' src='/content/fig1.png' style='display:none;'>
+<img class='slides' src='/content/fig2.png' style='display:none;'>
+<img class='slides' src='/content/fig3.png' style='display:none;'>
+<img class='slides' src='/content/fig4.png' style='display:none;'>
+<img class='slides' src='/content/fig5.png' style='display:none;'>
+<img class='slides' src='/content/fig6.png' style='display:none;'>
+<img class='slides' src='/content/fig7.png' style='display:none;'>
+<img class='slides' src='/content/fig8.png' style='display:none;'>
+<img class='slides' src='/content/fig9.png' style='display:none;'>
+<img class='slides' src='/content/fig10.png' style='display:none;'>
+<img class='slides' src='/content/fig11.png' style='display:none;'>
+<img class='slides' src='/content/fig12.png' style='display:none;'>
+<img class='slides' src='/content/fig13.png' style='display:none;'>
+<img class='slides' src='/content/fig14.png' style='display:none;'>
+
+    <script>
+        var slider = document.getElementById('myRange');
+        var images = document.getElementsByClassName('slides');
+        var output = document.getElementById("demo");
+        var array = [...]; // Ensure this is populated correctly or dynamically
+
+        function show_img(n) {
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = "none";
+            }
+            images[this.value].style.display = "block";
+            var roundedValue = Math.round(array[n]);
+            output.innerHTML = roundedValue;
+        }
+
+        slider.oninput = function() {
+            show_img(this.value);
+        };
+        
+        // Initialize the first image to show
+        show_img(0);
+    </script>
+</body>
+</html>
